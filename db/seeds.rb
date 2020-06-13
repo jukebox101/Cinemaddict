@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+Review.destroy_all
+Movie.destroy_all
+
+user1 = User.create(username: "jeff", first_name: "Jefferson", last_name: "Huisa", password: "test", email: "jeff@gmail.com")
+movie1 = Movie.create(title: "Avatar", genre: "Action", description: "Cool blue people", rating: "PG-13")
+review1 = Review.create(description: "Great movie", user_id: user1.id, movie_id: movie1.id, time_posted: Time.now)
