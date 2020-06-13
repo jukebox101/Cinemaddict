@@ -1,0 +1,21 @@
+<h1>Add New Movie</h1>
+
+<%= form_for @movie do |f| %>
+    <%= f.label :title %>
+        <%= f.text_field :title %>
+        <br>
+        <br>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+        <br>
+        <br>
+        <%= f.label :genre %>
+        <%= f.select :genre, ['Action', 'Adventure', 'Animation / Anime', 'Biopic', 'Childrens', 'Comedy', 'Crime', 'Detective/Spy', 'Documentary', 'Drama', 'Horror', 'Family', 'Fantasy', 'Historical', 'Musical', 'Romance', 'Sport', 'Sci-Fi', 'Thriller / Suspense','War', 'Western'] %>
+        <br>
+        <br>
+        <%= f.label :rating %>
+        <%= f.select :rating, ['G', 'PG', 'PG-13', 'R', 'NC-17']%>
+        <br>
+        <br>
+    <%= f.submit "Submit" %>
+<% end %>
