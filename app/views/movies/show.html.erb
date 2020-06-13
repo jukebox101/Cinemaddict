@@ -4,3 +4,8 @@
         <li><%= "Description: #{@movie.description}" %></li>
         <li><%= "Rating: #{@movie.rating}" %></li>
     </ul>
+
+<%= link_to "Edit Movie Info", edit_movie_path(@movie) %> | <%= link_to "Movies Index Page", movies_path %>
+<br>
+<br>
+<%= button_to "delete", movie_path(@movie), :method => :delete %>

@@ -31,5 +31,10 @@ class MoviesController < ApplicationController
     end
 
     def destroy
+        movie = Movie.find(params[:id])
+        # movie.rooms.destroy_all
+        movie.destroy
+
+        redirect_to movies_path
     end
 end
