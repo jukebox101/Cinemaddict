@@ -1,0 +1,19 @@
+<h1>Welcome to <%= @user.full_name %>'s Page</h1>
+
+<h2>Profile</h2>
+<h3>First Name: <%= @user.first_name %></h3>
+<br>
+<h3>Last Name: <%= @user.last_name %></h3>
+<br>
+<h3>Username: <%= @user.username %></h3>
+<br>
+<h3>Password: <%= @user.password %></h3>
+<br>
+<h3>Email: <%= @user.email %></h3>
+
+<h2>Reviews</h2>
+<ol>
+  <% @user.reviews.each do |review| %>
+    <li>Movie: <%= Movie.find(review.movie_id).title %></li>
+  <% end %>
+</ol>
