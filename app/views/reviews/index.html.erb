@@ -1,0 +1,12 @@
+<h1>All Reviews</h1>
+
+<% @reviews.each do |review| %>
+    <h3>Review #<%= link_to review.id, review_path(review)%></h3>
+    <ul>
+        <li>Movie: <%= link_to Movie.find(review.movie_id).title, movie_path(review.movie_id) %></li>
+        <li>User: <%= link_to User.find(review.user_id).username, user_path(review.user_id) %></li>
+        <li><%= "Description: #{review.description}" %></li>
+    </ul>
+<% end %>
+
+<%= link_to "Add Review", new_review_path %>
