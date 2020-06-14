@@ -18,7 +18,7 @@ movie1 = Movie.create(title: "Avatar", genre: "Action", description: "Cool blue 
 movie2 = Movie.create(title: "The Revenant", genre: "Drama", description: "sustains life-threatening injuries from a brutal bear attack.", rating: "R")
 movie3 = Movie.create(title: "The Hangover", genre: "Comedy", description: "All three films follow the misadventures", rating: "R")
 movie4 = Movie.create(title: "The Terminator", genre: "Action", description: "Skynet goes live", rating: "R")
-movie5 = Movie.create(title: "Toy Story 1", genre: "Action", description: "Story about toys", rating: "G")
+movie5 = Movie.create(title: "Toy Story 1", genre: "Childrens", description: "Story about toys", rating: "G")
 
 review1 = Review.create(description: "Great movie", user_id: user1.id, movie_id: movie1.id, time_posted: Time.now)
 review2 = Review.create(description: "Not a good movie", user_id: user3.id, movie_id: movie3.id, time_posted: Time.now)
