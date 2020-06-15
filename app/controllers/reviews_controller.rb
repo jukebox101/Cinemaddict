@@ -13,8 +13,8 @@ class ReviewsController < ApplicationController
 
   def create
     review = Review.create(review_params)
-    # review.time_posted = Time.now
-    # byebug
+    review.time_posted = Time.now
+    byebug
 
     redirect_to reviews_path
   end
