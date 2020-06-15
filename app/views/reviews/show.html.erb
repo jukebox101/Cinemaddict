@@ -1,4 +1,4 @@
-<h1>Review #<%= @review.id %></h1>
+<h1>Review for <%= Movie.find(@review.movie_id).title %></h1>
     <ul>
         <li>Movie: <%= link_to Movie.find(@review.movie_id).title, movie_path(@review.movie_id) %></li>
         <li>User: <%= link_to User.find(@review.user_id).username, user_path(@review.user_id) %></li>
