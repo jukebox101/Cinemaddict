@@ -1,0 +1,15 @@
+<%= form_for @review do |f| %>
+  <%= f.label :user_id %>
+  <%= f.collection_select(:user_id, User.all, :id, :username) %>
+  <br>
+  <br>
+  <%= f.label :movie_id %>
+  <%= f.collection_select(:movie_id, Movie.all, :id, :title) %>
+  <br>
+  <br>
+  <%= f.label :description %><br>
+  <%= f.text_area :description, placeholder: "Comment" %>
+  <br>
+  <br>
+  <%= f.submit %>
+<% end %>

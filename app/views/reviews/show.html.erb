@@ -1,0 +1,13 @@
+<h1>Review #<%= @review.id %></h1>
+    <ul>
+        <li>Movie: <%= link_to Movie.find(@review.movie_id).title, movie_path(@review.movie_id) %></li>
+        <li>User: <%= link_to User.find(@review.user_id).username, user_path(@review.user_id) %></li>
+        <li><%= "Description: #{@review.description}" %></li>
+        <%# <%byebug%>
+        <li><%= "Time Posted: #{@review.created_at.strftime("%a %b %e %T %Y")}" %></li>
+    </ul>
+
+<%= link_to "Edit Review", edit_review_path(@review) %> | <%= link_to "All reviews", reviews_path %>
+<br>
+<br>
+<%= button_to "Remove Review", review_path(@review), :method => :delete %>
