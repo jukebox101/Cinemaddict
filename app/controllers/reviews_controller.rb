@@ -8,15 +8,22 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @errors = flash[:errors]
     @review = Review.new
+    render :new
   end
 
   def create
     review = Review.create(review_params)
-    review.time_posted = Time.now
-    byebug
+    if review.valid?
+      review.time_posted = Time.now
 
-    redirect_to reviews_path
+      redirect_to reviews_path
+    else
+      flash[:errors] = review.errors.full_messages
+      redirect_to new_review_path(review)
+    end
+
   end
 
   def edit

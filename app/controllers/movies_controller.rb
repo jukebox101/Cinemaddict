@@ -8,14 +8,20 @@ class MoviesController < ApplicationController
     end
 
     def new
+        @errors = flash[:errors]
         @movie = Movie.new
+        render :new
     end
 
     def create
         movie_params = params.require(:movie).permit(:title, :genre, :description, :rating)
         @movie = Movie.create(movie_params)
-
-        redirect_to movie_path(@movie)
+        if @movie.valid?
+            redirect_to movie_path(@movie)
+        else
+            flash[:errors] = @movie.errors.full_messages
+            redirect_to new_movie_path(@movie)
+        end
     end
 
     def edit

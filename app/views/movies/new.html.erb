@@ -1,6 +1,11 @@
 <h1>Add New Movie</h1>
 <%= link_to "Main Menu", '/welcome' %>
 <br>
+<% if @errors %>
+    <% @errors.each do |error| %>
+      <p style="color:red"><%= error %></p>
+    <% end %>
+  <% end %>
 <%= form_for @movie do |f| %>
     <%= f.label :title %>
         <%= f.text_field :title %>

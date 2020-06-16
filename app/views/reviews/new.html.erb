@@ -1,5 +1,10 @@
 <h1>New review</h1>
 <%= link_to "Main Menu", '/welcome' %>
 <br>
+<% if @errors %>
+    <% @errors.each do |error| %>
+      <p style="color:red"><%= error %></p>
+    <% end %>
+  <% end %>
 <%= render 'form' %>
 
