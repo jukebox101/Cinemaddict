@@ -1,0 +1,7 @@
+<h1>Search Results</h1>
+
+<%= link_to "Main Menu", '/welcome' %>
+<br>
+<% @movies.each do |movie| %>
+    <li><%= movie.title %></li>
+  <% end %>

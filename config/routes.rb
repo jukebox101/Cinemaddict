@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # resources :likes
   resources :movies
+  get 'search', to: 'movies#search'
   resources :reviews
   # resources :users
   get "/users", to: 'users#index', as: "users" # index
