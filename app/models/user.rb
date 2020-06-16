@@ -2,6 +2,8 @@ class User < ApplicationRecord
     has_many :reviews
     has_many :movies, through: :reviews
     
+    has_secure_password
+
     # username must not be nil
     validates :username, presence: true
     # username cannot already exist
@@ -17,7 +19,7 @@ class User < ApplicationRecord
     # email must be unique
     validates :email, uniqueness: { case_sensitive: false }
     # password must not be nil
-    validates :password, presence: true
+    validates :password_digest, presence: true
 
 
     def full_name

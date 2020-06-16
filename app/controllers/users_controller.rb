@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
+  skip_before_action :authorized, only: [:new, :create]
 
   def index
     @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = User.find_by(id: session[:user_id]) 
   end
 
   def new
@@ -15,9 +17,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    if user.valid?
-      redirect_to user_path(user)
+    @user = User.create(user_params)
+    if @user.valid?
+      session[:user_id] = @user.id
+      redirect_to '/welcome'
+
+      # redirect_to user_path(user)
     else
       flash[:errors] = user.errors.full_messages
       redirect_to new_user_path(user)
@@ -26,12 +31,12 @@ class UsersController < ApplicationController
 
   def edit
     @errors = flash[:errors]
-    @user = User.find(params[:id])
+    @user = User.find_by(id: session[:user_id])
     render :edit
   end
 
   def update
-    user = User.find(params[:id])
+    user = User.find_by(id: session[:user_id])
 
     if user.valid?
       user.update(user_params)
@@ -42,8 +47,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    session[:user_id] = nil
+    redirect_to welcome_path
+  end
+
   def destroy
-    user = User.find(params[:id])
+    user = User.find_by(id: session[:user_id])
     user.destroy
 
     redirect_to users_path

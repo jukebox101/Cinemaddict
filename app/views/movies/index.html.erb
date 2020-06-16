@@ -1,5 +1,6 @@
 <h1>Movie List</h1>
-
+<%= link_to "Main Menu", '/welcome' %>
+<br>
 <% @movies.each do |movie| %>
     <h2><%= link_to movie.title, movie_path(movie)%></h2>
     <ul>

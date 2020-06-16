@@ -2,7 +2,7 @@
 
 <h2>Profile</h2>
 
-<%= link_to "Edit Profile", edit_user_path(@user) %> | <%= link_to "Go back", users_path %>
+<%= link_to "Main Menu", '/welcome' %> | <%= link_to "Edit Profile", edit_user_path(@user) %> | <%= link_to "Users Index", users_path %>
 
 <h3>First Name: <%= @user.first_name %></h3>
 <br>
@@ -10,11 +10,9 @@
 <br>
 <h3>Username: <%= @user.username %></h3>
 <br>
-<h3>Password: <%= @user.password %></h3>
-<br>
 <h3>Email: <%= @user.email %></h3>
-
-
+<br>
+<br>
 <h2>Reviews</h2>
 <ol>
   <% @user.reviews.each do |review| %>

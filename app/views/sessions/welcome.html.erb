@@ -1,0 +1,23 @@
+<% if logged_in? %>
+    <h1>Welcome Back, <%= current_user.first_name %></h1>
+    <br>
+    <%= link_to "View Your Profile", user_path(session[:user_id]) %>
+    <br>
+    <br>
+    <%= link_to "View Movies", movies_path %>
+    <br>
+    <br>
+    <%= link_to "Contribute To Our Movie Database", new_movie_path %>
+    <br>
+    <br>
+    <%= link_to "Write A Review", new_review_path %>
+    <br>
+    <br>
+    <%= button_to "Log out", "/logout" %>
+<% else %>
+    <h1><Welcome></h1>
+    <br>
+    <br>
+    <%= button_to "Login", '/login', method: :get%>
+    <%= button_to "Sign Up", '/users/new', method: :get%>
+<%end%>

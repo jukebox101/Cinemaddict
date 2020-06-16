@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_13_174050) do
+ActiveRecord::Schema.define(version: 2020_06_15_230844) do
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
@@ -36,10 +36,8 @@ ActiveRecord::Schema.define(version: 2020_06_13_174050) do
     t.string "username"
     t.string "first_name"
     t.string "last_name"
-    t.string "password"
+    t.string "password_digest"
     t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "reviews", "movies"

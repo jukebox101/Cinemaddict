@@ -7,7 +7,7 @@
         <li><%= "Time Posted: #{@review.created_at.strftime("%a %b %e %T %Y")}" %></li>
     </ul>
 
-<%= link_to "Edit Review", edit_review_path(@review) %> | <%= link_to "All reviews", reviews_path %>
+<%= link_to "Main Menu", '/welcome' %> | <%= link_to "Edit Review", edit_review_path(@review) %> | <%= link_to "All reviews", reviews_path %>
 <br>
 <br>
 <%= button_to "Remove Review", review_path(@review), :method => :delete %>

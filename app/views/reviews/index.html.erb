@@ -1,5 +1,6 @@
 <h1>All Reviews</h1>
-
+<%= link_to "Main Menu", '/welcome' %>
+<br>
 <% @reviews.each do |review| %>
     <h3>Review <%= link_to "#{review.description.slice(0..6)}...", review_path(review)%></h3>
     <ul>
