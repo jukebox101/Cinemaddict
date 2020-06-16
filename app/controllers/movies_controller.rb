@@ -25,15 +25,21 @@ class MoviesController < ApplicationController
     end
 
     def edit
+        @errors = flash[:errors]
         @movie = Movie.find(params[:id])
+        render :edit
     end
 
     def update
         movie = Movie.find(params[:id])
         movie_params = params.require(:movie).permit(:title, :genre, :description, :rating)
-        movie.update(movie_params)
-
-        redirect_to movie_path(movie)
+        if movie.valid?
+            movie.update(movie_params)
+            redirect_to movie_path(movie)
+        else
+            flash[:errors] = movie.errors.full_messages
+            redirect_to edit_movie_path(movie)
+        end
     end
 
     def destroy

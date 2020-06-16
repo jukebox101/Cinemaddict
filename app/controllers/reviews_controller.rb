@@ -27,14 +27,21 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @errors = flash[:errors]
     @review = Review.find(params[:id])
+    render :edit
   end
 
   def update
     review = Review.find(params[:id])
-    review.update(review_params)
+    if review.valid?
+      review.update(review_params)
 
-    redirect_to review_path(review)
+      redirect_to review_path(review)
+    else
+      flash[:errors] = review.errors.full_messages
+      redirect_to edit_review_path(review)
+    end
   end
 
   def destroy
