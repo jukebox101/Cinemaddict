@@ -1,6 +1,6 @@
 <%= form_for @review do |f| %>
   <%= f.label :user_id %>
-  <%= f.collection_select(:user_id, User.all, :id, :username) %>
+  <%= f.select :user_id, [[current_user.first_name, current_user.id]] %>
   <br>
   <br>
   <%= f.label :movie_id %>
@@ -8,7 +8,7 @@
   <br>
   <br>
   <%= f.label :description %><br>
-  <%= f.text_area :description, placeholder: "Comment" %>
+  <%= f.text_area :description, placeholder: "Write review here..." %>
   <br>
   <br>
   <%= f.submit %>

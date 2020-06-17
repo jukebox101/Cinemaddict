@@ -3,5 +3,5 @@ class Review < ApplicationRecord
   belongs_to :movie
 
   # description must not be nil
-  validates :description, presence: true
+  # validates :description, presence: true
 end

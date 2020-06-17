@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+    skip_before_action :authorized, only: [:new, :create]
     def index
         @movies = Movie.all
     end
@@ -18,7 +19,7 @@ class MoviesController < ApplicationController
     end
 
     def create
-        movie_params = params.require(:movie).permit(:title, :genre, :description, :rating)
+        movie_params = params.require(:movie).permit(:title, :genre, :description, :rating, :image)
         @movie = Movie.create(movie_params)
         if @movie.valid?
             redirect_to movie_path(@movie)
@@ -36,7 +37,7 @@ class MoviesController < ApplicationController
 
     def update
         movie = Movie.find(params[:id])
-        movie_params = params.require(:movie).permit(:title, :genre, :description, :rating)
+        movie_params = params.require(:movie).permit(:title, :genre, :description, :rating, :image)
         if movie.valid?
             movie.update(movie_params)
             redirect_to movie_path(movie)

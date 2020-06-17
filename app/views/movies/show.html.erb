@@ -1,5 +1,6 @@
 <h1><%= @movie.title %></h1>
     <ul>
+        <%= image_tag @movie.image, style: "width: 200px; display: block" %>
         <li><%= "Genre: #{@movie.genre}" %></li>
         <li><%= "Description: #{@movie.description}" %></li>
         <li><%= "Rating: #{@movie.rating}" %></li>

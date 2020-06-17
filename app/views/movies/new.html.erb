@@ -23,5 +23,13 @@
         <%= f.select :rating, ['G', 'PG', 'PG-13', 'R', 'NC-17']%>
         <br>
         <br>
+        <div class="form-group">
+          <% if @movie.image.attached? %>
+            <%= image_tag @movie.image, style: "width: 200px; display: block" %>
+          <% end %>
+
+          <%= f.label :image %>
+          <%= f.file_field :image, class: "form-control" %>
+        </div>
     <%= f.submit "Submit" %>
 <% end %>

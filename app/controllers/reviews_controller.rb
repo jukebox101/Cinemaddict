@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  skip_before_action :authorized, only: [:new, :create]
   def index
     @reviews = Review.all
   end
@@ -10,11 +11,13 @@ class ReviewsController < ApplicationController
   def new
     @errors = flash[:errors]
     @review = Review.new
+    @review.user_id = current_user.id
     render :new
   end
 
   def create
     review = Review.create(review_params)
+    review.user_id = current_user.id
     if review.valid?
       review.time_posted = Time.now
 
