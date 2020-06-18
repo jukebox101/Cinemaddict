@@ -1,3 +1,6 @@
-<h1>Not allowed</h1>
-
-<%# <%= render 'form' %>
+<% if current_user.id == @review.user.username %>
+ <%= render 'form' %>
+<% else %>
+<h1>You cannot edit another person's review</h1>
+<p><%=link_to 'Write your own review here', new_review_path %></p>
+<% end %>
