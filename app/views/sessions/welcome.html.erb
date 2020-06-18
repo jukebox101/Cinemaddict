@@ -1,19 +1,25 @@
 <% if logged_in? %>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <h1><%= "Welcome to Cinemaddict, #{current_user.first_name}!" %></h1>
+        <p>Add and review your favorite movies!</p> 
+    </div>
+
     <h1>Welcome Back, <%= current_user.first_name %></h1>
+
+    <% if !current_user.movies.empty? %>
+        <div class="row">
+            <% current_user.movies.each do |movie| %>
+                <div class="col-sm-6 col-md-3">
+                <div class="thumbnail">
+                    <%= link_to (image_tag movie.image.variant(resize: "400x400")), movie %>
+                </div>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+
     <br>
-    <%= link_to "View Your Profile", user_path(session[:user_id]) %>
-    <br>
-    <br>
-    <%= link_to "View Movies", movies_path %>
-    <br>
-    <br>
-    <%= link_to "Contribute To Our Movie Database", new_movie_path %>
-    <br>
-    <br>
-    <%= link_to "Write A Review", new_review_path %>
-    <br>
-    <br>
-    <%= button_to "Log out", "/logout" %>
+    <%= button_to "Log Out", logout_path %>
 <% else %>
     <div class="container">
     <div class="jumbotron">

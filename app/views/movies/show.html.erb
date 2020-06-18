@@ -30,8 +30,7 @@
         <% if !@movie.reviews.empty? %>
             <% Review.all.each do |review| %>
                 <% if review.movie_id == @movie.id  %>
-                <h2><%= review.description.slice(0..20) %></h2>
-                <h4><%= review.movie.title %></h4>
+                <h2><%= review.description.slice(0..20) %>...</h2>
                 <h5>Cinemaddict Rating:</h5>
                     <% times = review.movie_rating %>
                     <% while times > 0 do %>
@@ -39,8 +38,9 @@
                     <% times-=1 %>
                     <% end %>
                 <br>
+                <h5>reviewed by: <%= review.user.username %></h5>
                 <br>
-                <p><%= review.description.slice(0..100) %></p>
+                <p><%= review.description %></p>
                 <br>
                 <p><%= "Posted: #{review.created_at.strftime("%a %b %e %T %Y")}" %></p>
                 <% end %>

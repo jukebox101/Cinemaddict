@@ -2,7 +2,7 @@
 
 <br>
 <% @reviews.each do |review| %>
-    <h4><%= link_to "#{review.description.slice(0..20)}...", review_path(review)%></h4>
+    <h4><%= link_to "#{review.description.slice(0..29)}...", review_path(review)%></h4>
     <ul>
         <li>Movie: <%= link_to Movie.find(review.movie_id).title, movie_path(review.movie_id) %></li>
         <li>Reviewed by: <%= User.find(review.user_id).username%></li>
