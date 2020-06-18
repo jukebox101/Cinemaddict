@@ -1,5 +1,4 @@
 <h1>Add New Movie</h1>
-<%= link_to "Main Menu", '/welcome' %>
 <br>
 <% if @errors %>
     <% @errors.each do |error| %>
@@ -7,19 +6,19 @@
     <% end %>
   <% end %>
 <%= form_for @movie do |f| %>
-    <%= f.label :title %>
+    <%= f.label :title %><br>
         <%= f.text_field :title %>
         <br>
         <br>
-        <%= f.label :description %>
-        <%= f.text_field :description %>
+        <%= f.label :description %><br>
+        <%= f.text_area :description %>
         <br>
         <br>
-        <%= f.label :genre %>
+        <%= f.label :genre %><br>
         <%= f.select :genre, ['Action', 'Adventure', 'Animation / Anime', 'Biopic', 'Childrens', 'Comedy', 'Crime', 'Detective/Spy', 'Documentary', 'Drama', 'Horror', 'Family', 'Fantasy', 'Historical', 'Musical', 'Romance', 'Sport', 'Sci-Fi', 'Thriller / Suspense','War', 'Western'] %>
         <br>
         <br>
-        <%= f.label :rating %>
+        <%= f.label :rating %><br>
         <%= f.select :rating, ['G', 'PG', 'PG-13', 'R', 'NC-17']%>
         <br>
         <br>
@@ -31,5 +30,6 @@
           <%= f.label :image %>
           <%= f.file_field :image, class: "form-control" %>
         </div>
-    <%= f.submit "Submit" %>
+
+    <input type="submit" class="btn btn-info" value="Submit">
 <% end %>
