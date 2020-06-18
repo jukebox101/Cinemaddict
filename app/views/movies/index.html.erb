@@ -1,13 +1,11 @@
-<h1>Movie List</h1>
-<%= link_to "Main Menu", '/welcome' %>
-<br>
-<% @movies.each do |movie| %>
-    <h2><%= link_to movie.title, movie_path(movie)%></h2>
+  <h1>Move List</h1>
+  <% @movies.each do |movie| %>
     <ul>
+        <%= image_tag movie.image, style: "width: 250px; display: block" %>
+        <h5><%= link_to "#{movie.title}", movie_path(movie) %></h5>
         <li><%= "Genre: #{movie.genre}" %></li>
         <li><%= "Description: #{movie.description}" %></li>
         <li><%= "Rating: #{movie.rating}" %></li>
     </ul>
-<% end %>
-
-<%= link_to "Add New Movie", new_movie_path %>
+  <% end %>
+  

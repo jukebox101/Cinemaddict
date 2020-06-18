@@ -1,11 +1,11 @@
-<h1>All Reviews</h1>
-<%= link_to "Main Menu", '/welcome' %>
+<h1>Movie Reviews</h1>
+
 <br>
 <% @reviews.each do |review| %>
-    <h3>Review <%= link_to "#{review.description.slice(0..6)}...", review_path(review)%></h3>
+    <h4><%= link_to "#{review.description.slice(0..20)}...", review_path(review)%></h4>
     <ul>
         <li>Movie: <%= link_to Movie.find(review.movie_id).title, movie_path(review.movie_id) %></li>
-        <li>User: <%= link_to User.find(review.user_id).username, user_path(review.user_id) %></li>
+        <li>Reviewed by: <%= User.find(review.user_id).username%></li>
         <li><%= "Description: #{review.description}" %></li>
     </ul>
 <% end %>

@@ -1,24 +1,47 @@
-<h1>Welcome to <%= @user.full_name %>'s Page</h1>
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1><%= "Welcome Back #{@user.first_name}" %></h1>
+  <p>Great to see you again!</p> 
+</div>
 
-<h2>Profile</h2>
+<div class="container" style="margin-top:30px">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2><%= @user.username %></h2>
 
-<%= link_to "Main Menu", '/welcome' %> | <%= link_to "Edit Profile", edit_user_path(@user) %> | <%= link_to "Users Index", users_path %>
-
-<h3>First Name: <%= @user.first_name %></h3>
-<br>
-<h3>Last Name: <%= @user.last_name %></h3>
-<br>
-<h3>Username: <%= @user.username %></h3>
-<br>
-<h3>Email: <%= @user.email %></h3>
-<br>
-<br>
-<h2>Reviews</h2>
-<ol>
-  <% @user.reviews.each do |review| %>
-    <li>Movie: <%= Movie.find(review.movie_id).title %></li>
-  <% end %>
-</ol>
-
-<br>
-<%= button_to "Delete Acc", user_path(@user), :method => :delete %>
+      <p>Total reviews written: <%= @user.reviews.length %></p>
+      <h3>User Options</h3>
+      <p>What would you like to do next?</p>
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href=<%=new_review_path%>>Write A Review</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href=<%=edit_user_path%>>Edit Your Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+      </ul>
+      <hr class="d-sm-none">
+    </div>
+    <div class="col-sm-8">
+      <% Review.all.each do |review| %>
+          <% if review.user_id == session[:user_id]  %>
+          <h2><%= review.description.slice(0..20) %></h2>
+          <h4><%= review.movie.title %></h4>
+          <h5>Cinemaddict Rating:</h5>
+            <% times = review.movie_rating %>
+            <% while times > 0 do %>
+              <span class="fa fa-star checked"></span>
+              <% times-=1 %>
+            <% end %>
+          <br>
+          <br>
+          <p><%= review.description.slice(0..100) %></p>
+          <br>
+          <p><%= "Posted: #{review.created_at.strftime("%a %b %e %T %Y")}" %></p>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -6,5 +6,10 @@
       <p style="color:red"><%= error %></p>
     <% end %>
   <% end %>
-<%= render 'form' %>
-
+  <% if logged_in? %>
+    <%= render 'form' %>
+  <% else %>
+  <div class="alert alert-danger">
+    <strong>Sorry!</strong> You must be <a href="welcome_path" class="alert-link">logged in to write a review.</a>.
+  </div>
+  <% end %>

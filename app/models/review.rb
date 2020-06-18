@@ -4,4 +4,5 @@ class Review < ApplicationRecord
 
   # description must not be nil
   # validates :description, presence: true
+
 end

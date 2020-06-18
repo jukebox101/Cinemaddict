@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
-    # skip_before_action :authorized, only: [:new, :create]
+    skip_before_action :authorized, only: [:new, :create]
+    
     def index
         @movies = Movie.all
     end

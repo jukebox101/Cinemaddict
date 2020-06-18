@@ -15,9 +15,13 @@
     <br>
     <%= button_to "Log out", "/logout" %>
 <% else %>
+    <div class="container">
+    <div class="jumbotron">
+        <h1>Welcome to Cinemaddict</h1>      
+        <p>Sign up today to contribute to our wonderful world of movie reviews.</p>
+    </div>
     <h1><Welcome></h1>
     <br>
     <br>
-    <%= button_to "Login", '/login', method: :get%>
-    <%= button_to "Sign Up", '/users/new', method: :get%>
+    <%= button_to "Login", '/login', method: :get%> | <%= button_to "Sign Up", '/users/new', method: :get%>
 <%end%>
